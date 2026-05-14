@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
 import { ArrowRight, Scissors, Star } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
@@ -15,14 +14,15 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image Fullscreen */}
+      {/* Background Video Fullscreen */}
       <div className="absolute inset-0">
-        <Image
-          src="/hero.jpeg"
-          alt="Ambiance Barber Industries"
-          fill
-          priority
-          className="object-cover"
+        <video
+          src="/animation-logo-barber-industries.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
         />
         {/* Dark & color overlay for readability */}
         <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-black/40" />
