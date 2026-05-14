@@ -109,31 +109,6 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Image Side */}
-          <div className="hidden lg:block">
-            <div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-glass border border-white/10 shadow-2xl">
-              <video
-                src="/imageh.mp4"
-                className="w-full h-full object-cover"
-                autoPlay
-                muted
-                loop
-                playsInline
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent" />
-
-              {/* Floating mini card */}
-              <div className="absolute top-6 right-6 bg-dark/80 backdrop-blur-md border border-white/10 rounded-2xl px-4 py-3 flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary-blue to-accent-rose flex items-center justify-center">
-                  <Scissors className="w-4 h-4 text-white" />
-                </div>
-                <div>
-                  <p className="text-xs text-white/50 uppercase tracking-wider">Spécialité</p>
-                  <p className="text-sm text-white font-semibold">Fade & Barbering</p>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
 
