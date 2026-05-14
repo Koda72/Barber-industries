@@ -41,7 +41,7 @@ const services: {
         bookingHref: FRESHA_BOOKING_URL,
       },
       {
-        name: "La Coupe",
+        name: "La Coupe transformation",
         price: '25€ + 10€ barbe',
         duration: '30 - 40 min',
         description: 'Besoin de changement? On diagnostique, on vous conseil, on structure.',
