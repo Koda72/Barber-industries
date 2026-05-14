@@ -1,12 +1,3 @@
-/** Prise de rendez-vous Odoo — page générale */
-export const ODOO_APPOINTMENT_URL = 'https://barber-industries.odoo.com/appointment'
-
-/** Coupe classique — flux de réservation dédié */
-export const ODOO_APPOINTMENT_COUPE_CLASSIQUE = 'https://barber-industries.odoo.com/appointment/2'
-
-/** Coupe classique — créneaux supplémentaires */
-export const ODOO_APPOINTMENT_CRENEAUX_SUPPLEMENTAIRES =
-  'https://barber-industries.odoo.com/appointment/5'
-
-/** Coupe soirée */
-export const ODOO_APPOINTMENT_COUPE_SOIREE = 'https://barber-industries.odoo.com/appointment/3'
+/** Réservation unique via Fresha */
+export const BOOKING_URL =
+  'https://www.fresha.com/fr/a/barber-industries-montauban-18-allee-mortarieu-wzqejdum/booking?menu=true&share=true&pId=2847783&dppub=true&employeeId=5205917&cartId=982dde4d-4ebe351e85a5'

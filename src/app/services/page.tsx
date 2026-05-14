@@ -1,15 +1,14 @@
 import { Scissors, Clock } from 'lucide-react'
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import {
-  ODOO_APPOINTMENT_COUPE_CLASSIQUE,
-  ODOO_APPOINTMENT_CRENEAUX_SUPPLEMENTAIRES,
-  ODOO_APPOINTMENT_COUPE_SOIREE,
-} from '@/constants/booking'
+
+const FRESHA_BOOKING_URL =
+  'https://www.fresha.com/fr/a/barber-industries-montauban-18-allee-mortarieu-wzqejdum/booking?menu=true&share=true&pId=2847783&dppub=true&employeeId=5205917&cartId=982dde4d-4ed2-4133-97de-4ebe351e85a5'
 
 export const metadata: Metadata = {
   title: 'Services | Barber Industries',
-  description: 'Découvrez nos services de coupe homme, taille de barbe et forfaits premium. Des prestations de qualité pour révéler votre style.',
+  description:
+    'Découvrez nos services de coupe homme, taille de barbe et forfaits premium. Des prestations de qualité pour révéler votre style.',
 }
 
 type ServiceItem = {
@@ -17,11 +16,16 @@ type ServiceItem = {
   price: string
   duration: string
   description: string
-  /** Lien Odoo direct (ex. coupe classique) ; sinon page réservation du site */
   bookingHref?: string
 }
 
-const services: { id: string; icon: typeof Scissors; title: string; description: string; items: ServiceItem[] }[] = [
+const services: {
+  id: string
+  icon: typeof Scissors
+  title: string
+  description: string
+  items: ServiceItem[]
+}[] = [
   {
     id: 'coupe',
     icon: Scissors,
@@ -30,25 +34,25 @@ const services: { id: string; icon: typeof Scissors; title: string; description:
       'Sélectionne le type de rendez-vous qui te correspond. Trois prestations, simples et efficaces, pour coller à ton rythme et à ton style.',
     items: [
       {
-        name: 'Coupe Classique',
-        price: '15€ + 5€ barbe',
-        duration: '30 min',
+        name: "Coupe d'entretien",
+        price: '20€ + 5€ barbe',
+        duration: '20 - 30 min',
         description: 'La coupe de base, propre et efficace. Option barbe à +5€.',
-        bookingHref: ODOO_APPOINTMENT_COUPE_CLASSIQUE,
+        bookingHref: FRESHA_BOOKING_URL,
       },
       {
-        name: 'Coupe Classique - Créneaux supplémentaires',
-        price: '15€ + 5€ barbe',
-        duration: '30 min',
-        description: 'Quand les créneaux classiques sont complets, avec les mêmes prestations.',
-        bookingHref: ODOO_APPOINTMENT_CRENEAUX_SUPPLEMENTAIRES,
+        name: "La Coupe",
+        price: '25€ + 10€ barbe',
+        duration: '30 - 40 min',
+        description: 'Besoin de changement? On diagnostique, on vous conseil, on structure.',
+        bookingHref: FRESHA_BOOKING_URL,
       },
       {
-        name: 'Coupe Soirée',
-        price: '25€',
+        name: "Coupe d'urgence",
+        price: '30€',
         duration: '30 min',
-        description: 'Créneaux après 19h, parfait juste avant une soirée ou un événement.',
-        bookingHref: ODOO_APPOINTMENT_COUPE_SOIREE,
+        description: 'Créneaux supplémentaires disponibles en dehors des horaires classiques : entre midi et deux, plus tôt le matin ou plus tard en soirée.',
+        bookingHref: FRESHA_BOOKING_URL,
       },
     ],
   },
@@ -63,7 +67,7 @@ export default function ServicesPage() {
           <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-primary-blue/10 rounded-full blur-[120px]" />
           <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-accent-rose/10 rounded-full blur-[100px]" />
         </div>
-        
+
         <div className="relative container-custom px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <span className="inline-block text-accent-rose text-sm font-semibold tracking-wider uppercase mb-4">
@@ -73,7 +77,7 @@ export default function ServicesPage() {
               Prestations <span className="text-gradient">Premium</span>
             </h1>
             <p className="text-white/60 text-lg sm:text-xl leading-relaxed">
-              Des services de qualité supérieure pour révéler votre meilleur style. 
+              Des services de qualité supérieure pour révéler votre meilleur style.
               Chaque prestation est réalisée avec soin et expertise.
             </p>
           </div>
@@ -100,15 +104,13 @@ export default function ServicesPage() {
                   <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-4">
                     {service.title}
                   </h2>
-                  <p className="text-white/60 leading-relaxed">
-                    {service.description}
-                  </p>
+                  <p className="text-white/60 leading-relaxed">{service.description}</p>
                 </div>
               </div>
 
               {/* Service Items */}
               <div className="lg:col-span-2 space-y-4">
-                {service.items.map((item) => (
+                {service.items.map((item, index) => (
                   <div
                     key={item.name}
                     className="group card-premium p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
@@ -125,30 +127,39 @@ export default function ServicesPage() {
                       </div>
                       <p className="text-white/50 text-sm">{item.description}</p>
                     </div>
+
                     <div className="flex items-center gap-4">
                       <span className="text-2xl font-display font-bold text-accent-rose">
                         {item.price}
                       </span>
-                      {(() => {
-                        const href = item.bookingHref ?? '/reservation'
-                        const isExternal = href.startsWith('http')
-                        const className =
-                          'px-4 py-2 bg-white/5 hover:bg-gradient-to-r hover:from-primary-blue hover:to-accent-rose text-white text-sm font-medium rounded-full transition-all duration-300'
-                        return isExternal ? (
-                          <a
-                            href={href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={className}
-                          >
-                            Réserver
-                          </a>
-                        ) : (
-                          <Link href={href} className={className}>
-                            Réserver
-                          </Link>
-                        )
-                      })()}
+
+                      {index === service.items.length - 1 ? (
+  <div className="flex gap-2">
+    <a
+      href="https://www.instagram.com/barber_industries?igsh=MXV6dXUyYWhkNDBzcw%3D%3D&utm_source=qr"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="px-4 py-2 bg-white/5 hover:bg-gradient-to-r hover:from-primary-blue hover:to-accent-rose text-white text-sm font-medium rounded-full transition-all duration-300"
+    >
+      Nous contacter
+    </a>
+    <a
+      href="tel:0620540945"
+      className="px-4 py-2 bg-white/5 hover:bg-gradient-to-r hover:from-primary-blue hover:to-accent-rose text-white text-sm font-medium rounded-full transition-all duration-300"
+    >
+      Appeler
+    </a>
+  </div>
+) : (
+  <a
+    href={item.bookingHref ?? FRESHA_BOOKING_URL}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="px-4 py-2 bg-white/5 hover:bg-gradient-to-r hover:from-primary-blue hover:to-accent-rose text-white text-sm font-medium rounded-full transition-all duration-300"
+  >
+    Réserver
+  </a>
+)}
                     </div>
                   </div>
                 ))}
@@ -168,12 +179,14 @@ export default function ServicesPage() {
             Réservez en ligne en quelques clics ou appelez-nous directement.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="/reservation"
+            <a
+              href={FRESHA_BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-8 py-4 bg-white text-dark font-semibold rounded-full hover:bg-white/90 transition-all hover:scale-105"
             >
               Réserver en ligne
-            </Link>
+            </a>
             <a
               href="tel:0620540945"
               className="px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-full hover:bg-white/10 transition-all"

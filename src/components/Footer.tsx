@@ -14,7 +14,10 @@ const footerLinks = {
     { href: '/services#coupe', label: 'Coupe Homme' },
     { href: '/services#barbe', label: 'Taille de Barbe' },
     { href: '/services#forfaits', label: 'Forfaits' },
-    { href: '/reservation', label: 'Réservation' },
+    {
+      href: 'https://www.fresha.com/fr/a/barber-industries-montauban-18-allee-mortarieu-wzqejdum/booking?menu=true&share=true&pId=2847783&dppub=true&employeeId=5205917&cartId=982dde4d-4ebe351e85a5',
+      label: 'Réservation',
+    },
   ],
 }
 

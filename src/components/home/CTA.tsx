@@ -42,16 +42,18 @@ export default function CTA() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="/reservation"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-dark font-semibold rounded-full
-                       transition-all duration-300 hover:bg-white/90 hover:shadow-[0_0_40px_rgba(255,255,255,0.3)]
-                       hover:scale-105"
-            >
-              <Calendar className="w-5 h-5" />
-              <span>Réserver maintenant</span>
-              <ArrowRight className="w-5 h-5" />
-            </Link>
+          <Link
+  href="https://www.fresha.com/fr/a/barber-industries-montauban-18-allee-mortarieu-wzqejdum/booking?menu=true&share=true&pId=2847783&dppub=true&employeeId=5205917&cartId=982dde4d-4ed2-4133-97de-4ebe351e85a5"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-flex items-center gap-2 px-8 py-4 bg-white text-dark font-semibold rounded-full
+           transition-all duration-300 hover:bg-white/90 hover:shadow-[0_0_40px_rgba(255,255,255,0.3)]
+           hover:scale-105"
+>
+  <Calendar className="w-5 h-5" />
+  <span>Réserver maintenant TEST</span>
+  <ArrowRight className="w-5 h-5" />
+</Link>
             <a
               href="tel:0620540945"
               className="inline-flex items-center gap-2 px-8 py-4 border-2 border-white/30 text-white font-semibold 

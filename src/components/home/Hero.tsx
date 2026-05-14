@@ -4,16 +4,11 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRight, Scissors, Star } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import {
-  ODOO_APPOINTMENT_COUPE_CLASSIQUE,
-  ODOO_APPOINTMENT_CRENEAUX_SUPPLEMENTAIRES,
-  ODOO_APPOINTMENT_COUPE_SOIREE,
-} from '@/constants/booking'
+
 
 export default function Hero() {
   const [mounted, setMounted] = useState(false)
-  const [showBookingChoices, setShowBookingChoices] = useState(false)
-
+  
   useEffect(() => {
     setMounted(true)
   }, [])
@@ -79,14 +74,15 @@ export default function Hero() {
               className={`flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 mb-12
                          transition-all duration-700 delay-300 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
             >
-              <button
-                type="button"
-                onClick={() => setShowBookingChoices(true)}
-                className="btn-primary group"
-              >
-                <span>Réserver maintenant</span>
-                <ArrowRight className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
-              </button>
+              <Link
+  href="https://www.fresha.com/fr/a/barber-industries-montauban-18-allee-mortarieu-wzqejdum/booking?menu=true&share=true&pId=2847783&dppub=true&employeeId=5205917&cartId=982dde4d-4ed2-4133-97de-4ebe351e85a5"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="btn-primary group"
+>
+  <span>Réserver maintenant</span>
+  <ArrowRight className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+</Link>
               <Link href="/services" className="btn-secondary">
                 <Scissors className="w-5 h-5 mr-2" />
                 <span>Nos Services</span>
@@ -148,73 +144,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Booking Choices Modal */}
-      {showBookingChoices && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm px-4">
-          <div className="card-premium max-w-lg w-full p-6 sm:p-8 bg-dark">
-            <h3 className="font-display text-2xl sm:text-3xl font-bold text-white mb-4 text-center">
-              Choisissez votre prestation
-            </h3>
-            <p className="text-white/60 text-sm sm:text-base mb-6 text-center">
-              Sélectionne le type de rendez-vous qui te correspond, tu pourras ensuite finaliser la réservation.
-            </p>
-            <div className="space-y-3 mb-6">
-              <Link
-                href={ODOO_APPOINTMENT_COUPE_CLASSIQUE}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setShowBookingChoices(false)}
-                className="flex items-center justify-between px-4 py-3 rounded-xl bg-white/5 hover:bg-white/10 transition-colors"
-              >
-                <div>
-                  <p className="text-white font-semibold">Coupe Classique</p>
-                  <p className="text-white/50 text-xs sm:text-sm">
-                    La coupe de base, propre et efficace.
-                  </p>
-                </div>
-                <span className="text-accent-rose text-sm font-semibold">15€ + 5€ barbe</span>
-              </Link>
-              <Link
-                href={ODOO_APPOINTMENT_CRENEAUX_SUPPLEMENTAIRES}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setShowBookingChoices(false)}
-                className="flex items-center justify-between px-4 py-3 rounded-xl bg-white/5 hover:bg-white/10 transition-colors"
-              >
-                <div>
-                  <p className="text-white font-semibold">Coupe Classique - Créneaux supplémentaires</p>
-                  <p className="text-white/50 text-xs sm:text-sm">
-                    Quand les créneaux classiques sont complets.
-                  </p>
-                </div>
-                <span className="text-accent-rose text-sm font-semibold">15€ + 5€ barbe</span>
-              </Link>
-              <Link
-                href={ODOO_APPOINTMENT_COUPE_SOIREE}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setShowBookingChoices(false)}
-                className="flex items-center justify-between px-4 py-3 rounded-xl bg-white/5 hover:bg-white/10 transition-colors"
-              >
-                <div>
-                  <p className="text-white font-semibold">Coupe Soirée</p>
-                  <p className="text-white/50 text-xs sm:text-sm">
-                    Créneaux après 19h, parfait avant une sortie.
-                  </p>
-                </div>
-                <span className="text-accent-rose text-sm font-semibold">25€</span>
-              </Link>
-            </div>
-            <button
-              type="button"
-              onClick={() => setShowBookingChoices(false)}
-              className="w-full btn-secondary"
-            >
-              Annuler
-            </button>
-          </div>
-        </div>
-      )}
+      
     </section>
   )
 }

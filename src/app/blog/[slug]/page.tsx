@@ -143,10 +143,15 @@ export default function BlogArticlePage({ params }: Props) {
       </section>
 
       <section className="py-12 bg-dark text-center">
-        <Link href="/reservation" className="btn-primary inline-flex">
-          Prendre rendez-vous
-        </Link>
-      </section>
+  <a
+    href="https://www.fresha.com/fr/a/barber-industries-montauban-18-allee-mortarieu-wzqejdum/booking?menu=true&share=true&pId=2847783&dppub=true&employeeId=5205917&cartId=982dde4d-4ebe351e85a5"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="btn-primary inline-flex"
+  >
+    Réserver maintenant
+  </a>
+</section>
     </>
   )
 }

@@ -269,12 +269,14 @@ export default function ContactPage() {
             Réservez en ligne en quelques clics et venez découvrir l'expérience Barber Industries.
           </p>
           <a
-            href="/reservation"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-dark font-semibold rounded-full 
-                     hover:bg-white/90 transition-all hover:scale-105"
-          >
-            Réserver maintenant
-          </a>
+  href="https://www.fresha.com/fr/a/barber-industries-montauban-18-allee-mortarieu-wzqejdum/booking?menu=true&share=true&pId=2847783&dppub=true&employeeId=5205917&cartId=982dde4d-4ed2-4133-97de-4ebe351e85a5"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-flex items-center gap-2 px-8 py-4 bg-white text-dark font-semibold rounded-full 
+           hover:bg-white/90 transition-all hover:scale-105"
+>
+  Réserver maintenant
+</a>
         </div>
       </section>
     </>
